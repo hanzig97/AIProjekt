@@ -1,0 +1,107 @@
+<body>
+
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<div class="container-fluid" style="height: 100%">
+    <div class="row no-gutters" style="height: 15%">
+        <!--<picture>-->
+        <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
+        <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
+        <!--<source media="(min-width: 640px)" srcset="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b">-->
+        <!--<img src="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b" alt="Trufla">-->
+        <!--</picture>-->
+        Projekt z przedmiotu Aplikacje Internetowe</br>
+        Marcin Służałek
+    </div>
+    <div class="row h-70 no-gutters" style="height: 70%">
+        <div class="col-2">
+            <ul>
+                <li><a href="element_inercyjny.html">Symulator odpowiedzi skokowej</a></li>
+                <li><a href="grafika_wektorowa.html">Grafika wektorowa</a></li>
+                <li><a href="animacja.html">Animacja</a></li>
+                <li><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></li>
+            </ul>
+        </div>
+        <div class="col-8">
+            <canvas id="animacja" width="400" height="300">
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+        <div class="col-2">
+            <img src="pp-put_logo_jasne.jpg">
+        </div>
+    </div>
+    <div class="row no-gutters" style="height: 15%">
+        <a href="index.html">Do strony głównej</a>
+    </div>
+</div>
+<script>
+    var kl1 = new Image();
+    kl1.src = 'kl1.png';
+    var kl2 = new Image();
+    kl2.src = 'kl2.png';
+    var kl3 = new Image();
+    kl3.src = 'kl3.png';
+    var kl4 = new Image();
+    kl4.src = 'kl4.png';
+
+    var canvas = document.getElementById("animacja");
+    var ctx = canvas.getContext("2d");
+    var time = 500;
+
+    window.onload = function() {
+        ctx.drawImage(kl1, 10, 10);
+    };
+    function loop(){
+        function draw1() {
+            ctx.clearRect(0, 0, 400, 300);
+            ctx.drawImage(kl1, 10, 10);
+        }
+        setTimeout(draw1, time);
+
+        function draw2() {
+            ctx.clearRect(0, 0, 400, 300);
+            ctx.drawImage(kl2, 10, 10);
+        }
+        setTimeout(draw2, 2*time);
+
+        function draw3() {
+            ctx.clearRect(0, 0, 400, 300);
+            ctx.drawImage(kl3, 10, 10);
+        }
+        setTimeout(draw3, 3*time);
+
+        function draw4() {
+            ctx.clearRect(0, 0, 400, 300);
+            ctx.drawImage(kl4, 10, 10);
+        }
+        setTimeout(draw4, 4*time);
+    }
+    setInterval(loop, 4*time);
+</script>
+</body>
+</html>
+</body>
+</html>
