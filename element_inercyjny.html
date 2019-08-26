@@ -25,7 +25,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <div class="container-fluid">
-    <div class="row no-gutters">
+    <div class="h-15 row no-gutters">
         <!--<picture>-->
         <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
         <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
@@ -35,7 +35,7 @@
         Projekt z przedmiotu Aplikacje Internetowe</br>
         Marcin Służałek
     </div>
-    <div class="row no-gutters">
+    <div class="h-75 row no-gutters">
         <div class="col-2">
             <div style="display: flex">
 
@@ -52,12 +52,6 @@
                         Stała czasowa członu 2-go rzędu T2</br>
                         <input type="number" id="T2" value="10"/></br>
                     </form>
-                    <h3>Obiekt inercyjny 1-szego rzędu (czerwony)</h3>
-                    $$G(s) = \frac {k}{(sT+1)}$$
-                    $$h(t) = k(1-e^{-\frac{t}{T}})$$
-                    <h3>Obiekt inercyjny 2-go rzędu (niebieski)</h3>
-                    $$G(s) = \frac {k}{(sT_1+1)(sT_2+1)}$$
-                    $$h(t) = k(1-\frac{T_1}{T_1-T_2}e^{-\frac{t}{T_1}}+\frac{T_2}{T_1-T_2}e^{-\frac{t}{T_2}})$$
                 </div>
             </div>
         </div>
@@ -65,12 +59,18 @@
              <canvas id="plot" width="400" height="300">
                     Your browser does not support the canvas element.
              </canvas>
+            <h3>Obiekt inercyjny 1-szego rzędu (czerwony)</h3>
+            $$G(s) = \frac {k}{(sT+1)}$$
+            $$h(t) = k(1-e^{-\frac{t}{T}})$$
+            <h3>Obiekt inercyjny 2-go rzędu (niebieski)</h3>
+            $$G(s) = \frac {k}{(sT_1+1)(sT_2+1)}$$
+            $$h(t) = k(1-\frac{T_1}{T_1-T_2}e^{-\frac{t}{T_1}}+\frac{T_2}{T_1-T_2}e^{-\frac{t}{T_2}})$$
         </div>
         <div class="col-2">
             <img src="pp-put_logo_jasne.jpg">
         </div>
     </div>
-    <div class="row no-gutters">
+    <div class="h-15 row no-gutters">
         <a href="index.html">Do strony głównej</a>
     </div>
 </div>
