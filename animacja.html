@@ -24,65 +24,81 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<div class="container-fluid">
-    <div class="row no-gutters">
-        <!--<picture>-->
-        <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
-        <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
-        <!--<source media="(min-width: 640px)" srcset="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b">-->
-        <!--<img src="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b" alt="Trufla">-->
-        <!--</picture>-->
-        Projekt z przedmiotu Aplikacje Internetowe</br>
-        Marcin Służałek
-    </div>
-    <div class="row no-gutters">
-        <div class="col-2">
-            <ul>
-                <li><a href="element_inercyjny.html">Symulator odpowiedzi skokowej</a></li>
-                <li><a href="grafika_wektorowa.html">Grafika wektorowa</a></li>
-                <li><a href="animacja.html">Animacja</a></li>
-                <li><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></li>
-            </ul>
-        </div>
-        <div class="col-8">
-            <h1>Układ planetarny</h1>
-            <svg width="1000" height="1000">
-                <g>
-                    <circle cx="700" cy="600" r="30" style="fill:blue" id="ziemia"/>
-                    <circle cx="750" cy="650" r="10" style="fill:gray" id="ksiezyc">
-                        <animateTransform attributeName="transform"
-                                          type="rotate"
-                                          from="0 700 600" to="360 700 600"
-                                          begin="0s" dur="3s"
-                                          repeatCount="indefinite"
-                        />
-                    </circle>
-                    <animateTransform attributeName="transform"
-                                      type="rotate"
-                                      from="0 500 400" to="360 500 400"
-                                      begin="0s" dur="36s"
-                                      repeatCount="indefinite"
-                    />
-                </g>
-                <circle cx="500" cy="400" r="70" style="fill:yellow" id="slonce"/>
-                <!-- <path d="M 300 200 a 200 100 0 1 1 0 100 " stroke="black" stroke-width="2" style="fill:none"/> -->
-            </svg>
-            <div style="text-align:center;">
-                <h3>Pierwsze Prawo Keplera</h3>
-                $$e=\frac{c}{a}$$
-                <h3>Drugie Prawo Keplera</h3>
-                $$\frac{\Delta A}{\Delta t}=const$$
-                <br/>
-                <h3>Trzecie Prawo Keplera</h3>
-                $$\frac{T^2_1}{a^3_1}=\frac{T^2_2}{a^3_2}$$
+
+
+
+    <div class="container-fluid">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0"></script>
+
+        <div class="container-fluid" style="height: 100vh">
+            <div class="row bg-secondary text-white" style="height:15%">
+                <!--<picture>-->
+                <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
+                <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
+                <!--<source media="(min-width: 640px)" srcset="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b">-->
+                <!--<img src="https://b.allegroimg.com/s512/03b852/0889f0b44a4ca09e788240a3e72b" alt="Trufla">-->
+                <!--</picture>-->
+                Projekt z przedmiotu Aplikacje Internetowe</br>
+                Marcin Służałek
             </div>
-        <div class="col-2">
-            <img src="pp-put_logo_jasne.jpg">
+            <div class="row" style="height:70%">
+                <div class="col-2 bg-light text-dark">
+                    <button type="button" class="btn btn-dark btn-block"><a href="element_inercyjny.html">Symulator odpowiedzi skokowej</a></button>
+                    <button type="button" class="btn btn-dark btn-block"><a href="grafika_wektorowa.html">Grafika wektorowa</a></button>
+                    <button type="button" class="btn btn-dark btn-block"><a href="animacja.html">Animacja</a></button>
+                    <button type="button" class="btn btn-dark btn-block"><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></button>
+                </div>
+                <div class="col-8 pre-scrollable" style="max-height:100%">
+                    <h1>Układ planetarny</h1>
+                    <svg width="1000" height="1000">
+                        <g>
+                            <circle cx="700" cy="600" r="30" style="fill:blue" id="ziemia"/>
+                            <circle cx="750" cy="650" r="10" style="fill:gray" id="ksiezyc">
+                                <animateTransform attributeName="transform"
+                                                  type="rotate"
+                                                  from="0 700 600" to="360 700 600"
+                                                  begin="0s" dur="3s"
+                                                  repeatCount="indefinite"
+                                />
+                            </circle>
+                            <animateTransform attributeName="transform"
+                                              type="rotate"
+                                              from="0 500 400" to="360 500 400"
+                                              begin="0s" dur="36s"
+                                              repeatCount="indefinite"
+                            />
+                        </g>
+                        <circle cx="500" cy="400" r="70" style="fill:yellow" id="slonce"/>
+                        <!-- <path d="M 300 200 a 200 100 0 1 1 0 100 " stroke="black" stroke-width="2" style="fill:none"/> -->
+                    </svg>
+                    <div style="text-align:center;">
+                        <h3>Pierwsze Prawo Keplera</h3>
+                        $$e=\frac{c}{a}$$
+                        <h3>Drugie Prawo Keplera</h3>
+                        $$\frac{\Delta A}{\Delta t}=const$$
+                        <br/>
+                        <h3>Trzecie Prawo Keplera</h3>
+                        $$\frac{T^2_1}{a^3_1}=\frac{T^2_2}{a^3_2}$$
+                    </div>
+                </div>
+                <div class="col-2 bg-light text-dark">
+                    <img src="pp-put_logo_jasne.jpg">
+                </div>
+            </div>
+            <div class="row bg-secondary text-white text-left" style="height:15%">
+                <div class="col-6">
+                    <button type="button" class="btn btn-dark"><a href="index.html">Do strony głównej</a></button>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="fb-page" data-href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" data-tabs="timeline" data-width="500" data-height="120" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/">Klub Żeglarski Politechniki Poznańskiej</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row no-gutters">
-        <a href="index.html">Do strony głównej</a>
-    </div>
-</div>
+
 </body>
 </html>

@@ -24,8 +24,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
-<div class="container-fluid">
-    <div class="h-15 row no-gutters">
+<div class="container-fluid" style="height: 100vh">
+    <div class="row bg-secondary text-white" style="height:15%">
         <!--<picture>-->
         <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
         <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
@@ -35,18 +35,18 @@
         Projekt z przedmiotu Aplikacje Internetowe</br>
         Marcin Służałek
     </div>
-    <div class="h-75 row no-gutters">
+    <div class="row" style="height:70%">
         <div class="col-2">
             <div style="display: flex">
 
                 <div style="display: inline">
                     <form>
                         Wzmocnienie członu 1-szego rzędu k</br>
-                        <input type="number" id="k1" value="4"/></br>
+                        <input type="number" id="k1" value="2"/></br>
                         Stała czasowa członu 1-szego rzędu T</br>
                         <input type="number" id="T" value="10"/></br>
                         Wzmocnienie członu 2-go rzędu k</br>
-                        <input type="number" id="k2" value="5"/></br>
+                        <input type="number" id="k2" value="3"/></br>
                         Stała czasowa członu 2-go rzędu T1</br>
                         <input type="number" id="T1" value="50"/></br>
                         Stała czasowa członu 2-go rzędu T2</br>
@@ -55,10 +55,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
-             <canvas id="plot" width="400" height="300">
-                    Your browser does not support the canvas element.
-             </canvas>
+        <div class="col-8 pre-scrollable" style="max-height:100%">
+            <div class="p-3">
+                <canvas id="plot" width="400" height="300">
+                Your browser does not support the canvas element.
+                </canvas>
+            </div>
             <h3>Obiekt inercyjny 1-szego rzędu (czerwony)</h3>
             $$G(s) = \frac {k}{(sT+1)}$$
             $$h(t) = k(1-e^{-\frac{t}{T}})$$
@@ -70,10 +72,21 @@
             <img src="pp-put_logo_jasne.jpg">
         </div>
     </div>
-    <div class="h-15 row no-gutters">
-        <a href="index.html">Do strony głównej</a>
+    <div class="row bg-secondary text-white" style="height:15%">
+        <div class="col-6 text-left">
+            <button type="button" class="btn btn-dark"><a href="index.html">Do strony głównej</a></button>
+        </div>
+        <div class="col-6 text-right">
+            <div class="fb-page" data-href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" data-tabs="timeline" data-width="500" data-height="120" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/">Klub Żeglarski Politechniki Poznańskiej</a>
+                </blockquote>
+            </div>
+        </div>
     </div>
 </div>
+
+
 <script>
     (function(){
         var width = window.innerWidth;
@@ -176,5 +189,9 @@
     })
     ();
 </script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0"></script>
+
+
 </body>
 </html>

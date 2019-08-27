@@ -24,7 +24,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <div class="container-fluid">
-    <div class="row no-gutters">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0"></script>
+
+<div class="container-fluid" style="height: 100vh">
+    <div class="row bg-secondary text-white" style="height:15%">
         <!--<picture>-->
         <!--<source media="(max-width: 380px)" srcset="https://pollena.com.pl/5840-thickbox_default/bialy-jelen-mydlo-naturalne-w-kostce-szare-mydlo-150-g.jpg">-->
         <!--<source media="(max-width: 640px)" srcset="https://pl.rc-cdn.community.thermomix.com/recipeimage/qvyrc1sp-49549-783269-cfcd2-2uzub23h/1aa47b35-b705-4e2f-83a9-89b2c6a98f4d/medium/powidla-sliwkowe.jpg">-->
@@ -34,16 +38,14 @@
         Projekt z przedmiotu Aplikacje Internetowe</br>
         Marcin Służałek
     </div>
-    <div class="row h-70 no-gutters">
-        <div class="col-2">
-            <ul>
-                <li><a href="element_inercyjny.html">Symulator odpowiedzi skokowej</a></li>
-                <li><a href="grafika_wektorowa.html">Grafika wektorowa</a></li>
-                <li><a href="animacja.html">Animacja</a></li>
-                <li><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></li>
-            </ul>
+    <div class="row" style="height:70%">
+        <div class="col-2 bg-light text-dark">
+            <button type="button" class="btn btn-dark btn-block"><a href="element_inercyjny.html">Symulator odpowiedzi skokowej</a></button>
+            <button type="button" class="btn btn-dark btn-block"><a href="grafika_wektorowa.html">Grafika wektorowa</a></button>
+            <button type="button" class="btn btn-dark btn-block"><a href="animacja.html">Animacja</a></button>
+            <button type="button" class="btn btn-dark btn-block"><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></button>
         </div>
-        <div class="col-8">
+        <div class="col-8 pre-scrollable" style="max-height:100%">
             <h1>My first SVG</h1>
             <svg width="1000" height="1000">
                 <polygon points="600,0 600,600 0,600 0,650 650,650 650,0" style="fill:#404040"/>	<!--JP2/Kornicka-->
@@ -64,16 +66,24 @@
                             dur="3s"
                             repeatCount="indefinite"
                     />
-
                 </rect>
             </svg>
         </div>
-        <div class="col-2">
+        <div class="col-2 bg-light text-dark">
             <img src="pp-put_logo_jasne.jpg">
         </div>
     </div>
-    <div class="row no-gutters">
-        <a href="index.html">Do strony głównej</a>
+    <div class="row bg-secondary text-white text-left" style="height:15%">
+        <div class="col-6">
+            <button type="button" class="btn btn-dark"><a href="index.html">Do strony głównej</a></button>
+        </div>
+        <div class="col-6 text-right">
+            <div class="fb-page" data-href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" data-tabs="timeline" data-width="500" data-height="120" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/KlubZeglarskiPolitechnikiPoznanskiej/">Klub Żeglarski Politechniki Poznańskiej</a>
+                </blockquote>
+            </div>
+        </div>
     </div>
 </div>
 </body>
