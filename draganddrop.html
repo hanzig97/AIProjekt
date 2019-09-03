@@ -1,20 +1,59 @@
-<body>
-
-</body>
-</html>
-
 <!doctype html>
-<html lang="en">
+<html lang="en" style="height:100%">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <title>Drag and drop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
 
-    <title>Hello, world!</title>
+        .eq {
+            font-size: 10rem;
+        }
+
+        .field {
+            display: inline-block;
+            border: 1px solid black;
+            min-width: 6rem;
+            min-height: 10rem;
+            margin: 0 0.75rem;
+            padding: 0 0.25rem;
+        }
+        .field > .field {
+            border: none;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .root {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .question {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .answers {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 <!-- Optional JavaScript -->
@@ -22,7 +61,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0"></script>
@@ -46,10 +84,22 @@
                 <button type="button" class="btn btn-dark btn-block"><a href="animacja_poklatkowa.html">Animacja poklatkowa</a></button>
                 <button type="button" class="btn btn-dark btn-block"><a href="draganddrop.html">Drag & Drop</a></button>
             </div>
-            <div class="col-12 col-md-8 col-xl-8">
-                <canvas id="animacja" width="400" height="300">
-                    Your browser does not support the canvas element.
-                </canvas>
+            <div class="col-12 col-md-8 col-xl-8" style="max-height:100%">
+                <div class="root">
+                    <div class="eq question">
+                        <div id="qq">2</div>
+                        +
+                        <div id="empty" class="field" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
+                        =
+                        <div id="qa">8</div>
+                    </div>
+                    <div class="eq answers">
+                        <div id="a1" draggable="true" ondragstart="dragstart_handler(event);" class="field">7</div>
+                        <div id="a2" draggable="true" ondragstart="dragstart_handler(event);" class="field">6</div>
+                        <div id="a3" draggable="true" ondragstart="dragstart_handler(event);" class="field">3</div>
+                    </div>
+                </div>
+                <script src="draganddrop.js"></script>
             </div>
             <div class="col-12 col-md-12 col-xl-2 bg-light text-dark text-center">
                 <img src="pp-put_logo_jasne.jpg">
@@ -67,53 +117,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-<script>
-    var kl1 = new Image();
-    kl1.src = 'kl1.png';
-    var kl2 = new Image();
-    kl2.src = 'kl2.png';
-    var kl3 = new Image();
-    kl3.src = 'kl3.png';
-    var kl4 = new Image();
-    kl4.src = 'kl4.png';
-
-    var canvas = document.getElementById("animacja");
-    var ctx = canvas.getContext("2d");
-    var time = 500;
-
-    window.onload = function() {
-        ctx.drawImage(kl1, 10, 10);
-    };
-    function loop(){
-        function draw1() {
-            ctx.clearRect(0, 0, 400, 300);
-            ctx.drawImage(kl1, 10, 10);
-        }
-        setTimeout(draw1, time);
-
-        function draw2() {
-            ctx.clearRect(0, 0, 400, 300);
-            ctx.drawImage(kl2, 10, 10);
-        }
-        setTimeout(draw2, 2*time);
-
-        function draw3() {
-            ctx.clearRect(0, 0, 400, 300);
-            ctx.drawImage(kl3, 10, 10);
-        }
-        setTimeout(draw3, 3*time);
-
-        function draw4() {
-            ctx.clearRect(0, 0, 400, 300);
-            ctx.drawImage(kl4, 10, 10);
-        }
-        setTimeout(draw4, 4*time);
-    }
-    setInterval(loop, 4*time);
-</script>
-</body>
-</html>
 </body>
 </html>
