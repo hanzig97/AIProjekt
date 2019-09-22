@@ -17,15 +17,23 @@
         border: 1px solid grey;
         box-sizing: border-box;
         float: left;
-        width: 24px;
-        height: 24px;
+        width: calc(100%/30);
+        /*height: 20px;*/
+    }
+    #board div:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
     }
     #board {
-        width: calc(30 * 24px);
+        width: 80%;
         margin: auto;
     }
     #board .snake {
         background-color: green;
+    }
+    #board .apple {
+        background-color: darkred;
     }
 </style>
 <body onload="initGame()" onkeydown="enterKey(event)">
@@ -60,8 +68,28 @@
             <button type="button" class="btn btn-dark btn-block"><a href="log_wizyt.html">Log wizyt</a></button>
         </div>
         <div class="col-12 col-md-8 col-xl-8 text-center">
-            <h1>Gra Snake</h1>
-            <div id="board"></div>
+            <div class="row">
+                <div class="col-6 text-left">
+                    <h2>Punkty: <div id="points" class="d-inline"></div></h2>
+                </div>
+                <div class="col-6 text-left">
+                    <h1>Gra Snake</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="board"></div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-center">
+                    <button type="button" class="btn btn-dark btn-block" onclick="setTime(300)">Łatwy</button>
+                </div>
+                <div class="col-4 text-center">
+                    <button type="button" class="btn btn-dark btn-block" onclick="setTime(200)">Średni</button>
+                </div>
+                <div class="col-4 text-center">
+                    <button type="button" class="btn btn-dark btn-block" onclick="setTime(100)">Trudny</button>
+                </div>
+            </div>
         </div>
         <div class="col-12 col-md-12 col-xl-2 bg-light text-dark text-center">
             <img src="pp-put_logo_jasne.jpg">
@@ -85,15 +113,53 @@
 </div>
 </body>
 <script>
+    function enterKey(event) {
+        // Update direction depending on key hit
+        switch (event.key) {
+            case 'ArrowUp': ((snakeDirection != 'Down' && (!pressed)) ? snakeDirection = 'Up' : snakeDirection = 'Down'); break;
+            case 'ArrowDown': ((snakeDirection != 'Up' && (!pressed))? snakeDirection = 'Down' : snakeDirection = 'Up'); break;
+            case 'ArrowLeft': ((snakeDirection != 'Right' && (!pressed))? snakeDirection = 'Left' : snakeDirection = 'Right'); break;
+            case 'ArrowRight': ((snakeDirection != 'Left' && (!pressed))? snakeDirection = 'Right' : snakeDirection = 'Left'); break;
+            default: break;
+        }
+        pressed = 1;
+        // This prevents the arrow keys from scrolling the window
+        event.preventDefault();
+    }
+
+    function placeApple() {
+        // A random coordinate for the apple
+        let appleX;
+        let appleY;
+        do {
+            appleX = Math.floor(Math.random() * boardWidth);
+            appleY = Math.floor(Math.random() * boardHeight);
+        }while(board[appleY][appleX].snake > 0 || (board[appleY][appleX].apple > 0));
+        board[appleY][appleX].apple = 1;
+    }
+
+    function setTime(intime) {
+        time = intime;
+    }
+
     const board = [];
     const boardWidth = 30, boardHeight = 20;
     const boardElement = document.getElementById('board');
 
+    let snakeX;
+    let snakeY;
+    let snakeDirection;
+    let snakeLength;
+    let points;
+    let pressed;
+    let time = 200;
+    let have_eaten = 0;
+
     function initGame() {
         for (let y = 0; y < boardHeight; ++y) {
-            var row = [];
+            let row = [];
             for (let x = 0; x < boardWidth; ++x) {
-                var cell = {
+                let cell = {
                     snake: 0
                 };
                 cell.element = document.createElement('div');
@@ -104,41 +170,28 @@
         }
         startGame();
     }
-    var snakeX;
-    var snakeY;
-    var snakeDirection;
-    var snakeLength;
+
     function startGame() {
         // Default position for the snake in the middle of the board.
         snakeX = Math.floor(boardWidth / 2);
         snakeY = Math.floor(boardHeight / 2);
         snakeLength = 5;
         snakeDirection = 'Up';
-
+        points = 0;
         // Clear the board
-        for (var y = 0; y < boardHeight; ++y) {
-            for (var x = 0; x < boardWidth; ++x) {
+        for (let y = 0; y < boardHeight; ++y) {
+            for (let x = 0; x < boardWidth; ++x) {
                 board[y][x].snake = 0;
+                board[y][x].apple = 0;
             }
         }
-
         // Set the center of the board to contain a snake
-        board[snakeY][snakeX].snake = 1;
-        gameLoop();
+        board[snakeY][snakeX].snake = snakeLength-1;
+        board[snakeY][snakeX].element.className = "snake";
+        setTimeout(gameLoop, time);
+        placeApple();
     }
-    function enterKey(event) {
-        // Update direction depending on key hit
-        switch (event.key) {
-            case 'ArrowUp': snakeDirection = 'Up'; break;
-            case 'ArrowDown': snakeDirection = 'Down'; break;
-            case 'ArrowLeft': snakeDirection = 'Left'; break;
-            case 'ArrowRight': snakeDirection = 'Right'; break;
-            default: return;
-        }
 
-        // This prevents the arrow keys from scrolling the window
-        event.preventDefault();
-    }
     function gameLoop() {
         // Update position depending on which direction the snake is moving.
         switch (snakeDirection) {
@@ -147,28 +200,49 @@
             case 'Left':  snakeX--; break;
             case 'Right': snakeX++; break;
         }
-        // Loop over the entire board, and update every cell
-        for (var y = 0; y < boardHeight; ++y) {
-            for (var x = 0; x < boardWidth; ++x) {
-                var cell = board[y][x];
-
-                if (cell.snake) {
-                    cell.element.className = 'snake';
-                }
-                else {
-                    cell.element.className = '';
-                }
-            }
-        }
+        pressed = 0;
         // Check for walls, and restart if we collide with any
         if (snakeX < 0 || snakeY < 0 || snakeX >= boardWidth || snakeY >= boardHeight) {
             startGame();
             return;
         }
+        // Collect apples
+        if (board[snakeY][snakeX].apple == 1) {
+            snakeLength++;
+            points++;
+            have_eaten = 1;
+            board[snakeY][snakeX].apple = 0;
+            placeApple()
+        }
+        // Tail collision
+        if (board[snakeY][snakeX].snake > 0) {
+            startGame();
+            return;
+        }
         // Update the board at the new snake position
-        board[snakeY][snakeX].snake = 1;
+        board[snakeY][snakeX].snake = snakeLength;
+        // Loop over the entire board, and update every cell
+        for (let y = 0; y < boardHeight; ++y) {
+            for (let x = 0; x < boardWidth; ++x) {
+                let cell = board[y][x];
+                if (cell.snake) {
+                    cell.element.className = 'snake';
+                    if(!have_eaten) {
+                        cell.snake -= 1;
+                    }
+                }
+                else if(cell.apple){
+                    cell.element.className = "apple";
+                }
+                else{
+                    cell.element.className = '';
+                }
+            }
+        }
+        have_eaten = 0;
+        document.getElementById("points").innerHTML = points;
         // This function calls itself, with a timeout of 1000 milliseconds
-        setTimeout(gameLoop, 1000);
+        setTimeout(gameLoop, time);
     }
 </script>
 </html>
